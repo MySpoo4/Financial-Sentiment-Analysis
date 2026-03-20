@@ -62,32 +62,3 @@ rf_df = pd.DataFrame(
 )
 top_rf_words = rf_df.sort_values(by="Gini Importance", ascending=False).head(15)
 print(top_rf_words.to_string(index=False))
-
-# import joblib
-# import pandas as pd
-#
-# # 1. Load the winning Logistic Regression model
-# model = joblib.load("./models/logistic_regression.pkl")
-#
-# # 2. Extract the two pieces of the puzzle
-# # 'tfidf' holds the words, 'clf' holds the math
-# vectorizer = model.named_steps["tfidf"]
-# classifier = model.named_steps["clf"]
-#
-# # 3. Get the actual list of words (the vocabulary)
-# feature_names = vectorizer.get_feature_names_out()
-#
-# # 4. Loop through each class (Negative, Neutral, Positive)
-# # classifier.classes_ tells us the exact names of your classes
-# for i, class_label in enumerate(classifier.classes_):
-#     print(f"\n--- Top 10 Keywords driving the '{class_label}' class ---")
-#
-#     # Get the coefficients for this specific class
-#     coefficients = classifier.coef_[i]
-#
-#     # Zip the words and their scores together into a DataFrame
-#     coef_df = pd.DataFrame({"Keyword": feature_names, "Importance Score": coefficients})
-#
-#     # Sort them by the highest score to find the strongest drivers
-#     top_words = coef_df.sort_values(by="Importance Score", ascending=False).head(10)
-#     print(top_words.to_string(index=False))
