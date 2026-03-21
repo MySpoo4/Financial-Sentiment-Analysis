@@ -34,7 +34,7 @@ def train_model(x, y):
     if not os.path.exists("./models"):
         os.makedirs("./models")
 
-    joblib.dump(model, "./models/logistic_regression.pkl")
+    joblib.dump(model, "./models/bayesian_classifier.pkl")
 
     # 7. Final Evaluation
     y_pred = cross_val_predict(model, x, y, cv=cv)
